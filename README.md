@@ -1,3 +1,6 @@
 # EVA_P2_sess10
 
 I have been trying to solve the rotating car issue. I tried superimposing the conv input with an arrow but it does not stop the car from spinning. I have implemented experience replay where we choose a range of indices from the replay buffer and sample from this range to get contextually similar transistions. I have thoroughly understood the code, and tried to use resnet 9 for the TD3. I understand when we have to use expand dims; in select action, we use it twice on each of the state entries because we need a batch size of 1 and also a single channel input dimension for Conv2d (extra dimension needed for Linear as well). This state is then fed to the actor to predict an action. In the train method within TD3, we use the sample method of replay buffer to fetch batches of states, next states, rewards, actions and dones from the replay buffer storage. We then add another dimension in the first axis as we need a single channel input dimension for Conv2d (extra dimension needed for Linear as well). I am using batch_norm in the conv layers to reduce the spinning problem and I have tweaked the learning rate, weight decay (in the Adam optimizer). 
+
+The youtube video link:
+https://youtu.be/cYyu_1DnC3Y
